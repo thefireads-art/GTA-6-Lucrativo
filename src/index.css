@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Outfit", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@layer base {
+  html {
+    background-color: #08070b;
+    color: rgba(255, 255, 255, 0.92);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    background-color: #08070b;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+}
+
+/* Clean, calm matte obsidian card surfaces — zero visual pollution */
+.surface-card {
+  background-color: #111017;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.surface-card-accent {
+  background-color: #13111a;
+  border: 1px solid rgba(245, 184, 46, 0.28);
+}
+
+/* Vibrant WhatsApp green highlight surface for the VIP group card */
+.surface-card-whatsapp {
+  background-color: #1fd462;
+  border: 1px solid rgba(145, 255, 186, 0.55);
+  box-shadow: 0 18px 40px -18px rgba(31, 212, 98, 0.55);
+}
+
+/* Gradient border frame reserved exclusively for the Hero brand artwork */
+.hero-artwork-frame {
+  background: linear-gradient(135deg, #e12687 0%, #8b2cf5 50%, #f5b82e 100%);
+  box-shadow: 0 24px 64px -24px rgba(225, 38, 135, 0.35);
+}
+
+/* Dual opposite-direction seamless marquee for social proof screenshots */
+@keyframes marquee-ltr {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+@keyframes marquee-rtl {
+  0% {
+    transform: translate3d(0%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track-ltr {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-ltr 26s linear infinite;
+}
+
+.marquee-track-rtl {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marquee-rtl 26s linear infinite;
+}
+
+.marquee-viewport {
+  contain: layout paint;
+}
+
+.marquee-viewport:hover .marquee-track-ltr,
+.marquee-viewport:hover .marquee-track-rtl,
+.marquee-viewport:active .marquee-track-ltr,
+.marquee-viewport:active .marquee-track-rtl {
+  animation-play-state: paused;
+}
+
+/* Defer off-screen layout/paint for below-the-fold sections */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+}
+
+/* Subtle horizontal scrollbar hiding for smooth mobile snap carousels */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track-ltr,
+  .marquee-track-rtl {
+    animation: none;
+  }
+
+  .marquee-viewport {
+    overflow-x: auto;
+  }
+}

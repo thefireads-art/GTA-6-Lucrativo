@@ -1,0 +1,6 @@
+{
+  "name": "Canal Dark GTA 6 em 20 Minutos",
+  "description": "Monte um Canal Dark de GTA 6 em 20 minutos e comece a faturar nos primeiros 7 dias sem aparecer e sem ter o jogo, por R$19,90.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
